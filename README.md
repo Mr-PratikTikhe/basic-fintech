@@ -81,7 +81,7 @@ This project is a basic fintech platform that allows users to manage their accou
 
   **Response:**
  
-    ```json
+    ```JSON
        {
          "users": [
            {
@@ -91,6 +91,7 @@ This project is a basic fintech platform that allows users to manage their accou
            }
          ]
        }
+    ```
 
 
 - **POST /users**
@@ -99,66 +100,71 @@ This project is a basic fintech platform that allows users to manage their accou
  
    **Request body:**
 
-      ```json
+      ```JSON
            {
               "name": "User Name",
               "email": "user@example.com",
               "password": "user-password"
             }
+      ```
 
 
   **Reasponse:**
 
-     ```json
+     ```JSON
            {
               "id": "uuid"
            }
+     ```
 
 
 ### Transaction Endpoints
 
 
-- **GET /transactions**
+   - **GET /transactions**
   
-  Retrieves a list of transactions for a user.
+        Retrieves a list of transactions for a user.
   
-  **Request parameters**
-    - `user_id` : UUID of the user
+        **Request parameters**
+          - `user_id` : UUID of the user
  
-  **Response:**
+     **Response:**
 
-  ```json
-   {
-  "transactions": [
-    {
-      "id": "uuid",
-      "user_id": "uuid",
-      "type": "deposit",
-      "amount": 100.00,
-      "timestamp": "2024-07-26T12:34:56Z"
-    }
-  ]
-  }
+        ```JSON
+         {
+          "transactions": [
+          {
+            "id": "uuid",
+            "user_id": "uuid",
+            "type": "deposit",
+            "amount": 100.00,
+            "timestamp": "2024-07-26T12:34:56Z"
+          }
+        ]
+        }
+      ```
 
-- **POST /transactions**
+   - **POST /transactions**
 
-  Creates a new transaction.
-
-  **Request Body:**
-  ```json
-  {
-  "user_id": "uuid",
-  "type": "withdrawal",
-  "amount": 50.00
-  }
-
-
- **Response**
-   ```json
-    {
-       "id": "uuid"
-     }
-
+     Creates a new transaction.
+ 
+     **Request Body:**
+  
+ ```JSON
+         {
+           "user_id": "uuid",
+           "type": "withdrawal",
+           "amount": 50.00
+          }
+   ```
+        
+   **Response**
+   
+   ```JSON
+        {
+         "id": "uuid"
+        }
+   ```
 
 
 ## Design Decisions and Assumptions
