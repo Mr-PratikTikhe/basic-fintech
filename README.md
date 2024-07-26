@@ -162,3 +162,10 @@ This project is a basic fintech platform that allows users to manage their accou
 
 
 ## Design Decisions and Assumptions
+
+
+1. **Security**: Sensitive information, such as the Hasura admin secret, is managed via environment variables and excluded from version control using a .gitignore file.
+
+2. **Database Schema**: The schema for users and transactions is designed to be simple, focusing on essential attributes for user and transaction management.
+
+3. **Frontend Design**: The UI is designed to be straightforward, prioritizing functionality over aesthetics. Further enhancements can be made to improve the user experience.
