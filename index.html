@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintech Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Fintech Platform</h1>
+
+  <!-- Form to create a user -->
+  <form id="createUserForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Create User</button>
+  </form>
+
+  <!-- Button to fetch users -->
+  <button id="fetchUsersButton">Fetch Users</button>
+
+  <!-- Display user data -->
+  <div id="userList"></div>
+
+  <!-- Form to create a transaction -->
+  <form id="createTransactionForm">
+    <input type="text" id="userId" placeholder="User ID" required>
+    <select id="type" required>
+      <option value="deposit">Deposit</option>
+      <option value="withdrawal">Withdrawal</option>
+    </select>
+    <input type="number" id="amount" placeholder="Amount" required>
+    <button type="submit">Create Transaction</button>
+  </form>
+
+  <!-- Button to fetch transactions for a user -->
+  <input type="text" id="fetchUserId" placeholder="User ID" required>
+  <button id="fetchTransactionsButton">Fetch Transactions</button>
+
+  <!-- Display transaction data -->
+  <div id="transactionList"></div>
+
+  <script>
+    // Fetch users from the server
+    async function fetchUsers() {
+      try {
+        const response = await fetch('http://localhost:3000/users');
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        const userList = document.getElementById('userList');
+        userList.innerHTML = '<h2>Users:</h2>';
+        data.users.forEach(user => {
+          userList.innerHTML += `<p>ID: ${user.id}, Name: ${user.name}, Email: ${user.email}</p>`;
+        });
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    }
+
+    // Create a new user
+    async function createUser(name, email, password) {
+      try {
+        const response = await fetch('http://localhost:3000/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, email, password }),
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        console.log(data);
+        fetchUsers(); // Fetch users again to show the updated list
+      } catch (error) {
+        console.error('Error creating user:', error);
+      }
+    }
+
+    // Create a new transaction
+    async function createTransaction(user_id, type, amount) {
+      try {
+        const response = await fetch('http://localhost:3000/transactions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ user_id, type, amount }),
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        console.log(data);
+        fetchTransactions(user_id); // Fetch transactions again to show the updated list
+      } catch (error) {
+        console.error('Error creating transaction:', error);
+      }
+    }
+
+    // Fetch transactions for a user from the server
+    async function fetchTransactions(user_id) {
+      try {
+        const response = await fetch(`http://localhost:3000/transactions/${user_id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        const transactionList = document.getElementById('transactionList');
+        transactionList.innerHTML = '<h2>Transactions:</h2>';
+        data.forEach(transaction => {
+          transactionList.innerHTML += `<p>ID: ${transaction.id}, Type: ${transaction.type}, Amount: ${transaction.amount}, Timestamp: ${transaction.timestamp}</p>`;
+        });
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+      }
+    }
+
+    // Handle form submission for creating a user
+    document.getElementById('createUserForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      createUser(name, email, password);
+    });
+
+    // Handle fetch users button click
+    document.getElementById('fetchUsersButton').addEventListener('click', fetchUsers);
+
+    // Handle form submission for creating a transaction
+    document.getElementById('createTransactionForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const user_id = document.getElementById('userId').value;
+      const type = document.getElementById('type').value;
+      const amount = document.getElementById('amount').value;
+      createTransaction(user_id, type, amount);
+    });
+
+    // Handle fetch transactions button click
+    document.getElementById('fetchTransactionsButton').addEventListener('click', function() {
+      const user_id = document.getElementById('fetchUserId').value;
+      fetchTransactions(user_id);
+    });
+  </script>
+</body>
+</html>
