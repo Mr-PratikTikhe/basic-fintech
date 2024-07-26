@@ -1,0 +1,37 @@
+[
+  {
+    "amount": 1000,
+    "type": "deposit",
+    "timestamp": "06:34:57.77281+00",
+    "id": "3a0c2cfd-1dce-4ae6-8d25-8b30497a94a8",
+    "user_id": "9fd0ed24-e5fb-45da-aa67-d5bec4b4caec"
+  },
+  {
+    "amount": 1000,
+    "type": "withdrawal",
+    "timestamp": "06:35:38.346296+00",
+    "id": "5b1677fb-ca3c-4d35-be52-fd9625cf1c23",
+    "user_id": "9fd0ed24-e5fb-45da-aa67-d5bec4b4caec"
+  },
+  {
+    "amount": 500,
+    "type": "deposit",
+    "timestamp": "06:47:52.406527+00",
+    "id": "1d3f130b-0500-4d7f-b65e-0828f67b7856",
+    "user_id": "9fd0ed24-e5fb-45da-aa67-d5bec4b4caec"
+  },
+  {
+    "amount": 1000,
+    "type": "deposit",
+    "timestamp": "07:04:46.215899+00",
+    "id": "9802e269-5a7b-4223-86a0-d59f19bd7ede",
+    "user_id": "24909e17-d802-4398-825b-b7602b27914b"
+  },
+  {
+    "amount": 500,
+    "type": "withdrawal",
+    "timestamp": "07:05:05.963794+00",
+    "id": "f71b152c-3621-41e4-ad8a-a924e961af63",
+    "user_id": "24909e17-d802-4398-825b-b7602b27914b"
+  }
+]

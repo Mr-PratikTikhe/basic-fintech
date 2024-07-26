@@ -1,0 +1,23 @@
+[
+  {
+    "balance": 0,
+    "email": "john.doe@example.com",
+    "name": "John Doe",
+    "password": "fakeuser",
+    "id": "9b2f5a4f-f119-4d5c-9949-52840d46767f"
+  },
+  {
+    "balance": 0,
+    "email": "test@example.us",
+    "name": "Pratik Tikhe ",
+    "password": "fdgsdgsg",
+    "id": "9fd0ed24-e5fb-45da-aa67-d5bec4b4caec"
+  },
+  {
+    "balance": 0,
+    "email": "test@example.us",
+    "name": "fakeuser",
+    "password": "asdfadsf",
+    "id": "24909e17-d802-4398-825b-b7602b27914b"
+  }
+]
