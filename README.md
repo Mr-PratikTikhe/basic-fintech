@@ -59,13 +59,106 @@ This project is a basic fintech platform that allows users to manage their accou
 
 ### Frontend
 
-1.**Navigate to the Frontend Directory**
+1. **Navigate to the Frontend Directory**
 
-    
+   ```sh 
      cd frontend
 
 
-2.**Open index.html**
+2. **Open index.html**
 
- Open index.html in your preferred web browser. No additional setup is required for the frontend.
+   Open index.html in your preferred web browser. No additional setup is required for the frontend.
 
+
+## API Documentation
+
+### User Endpoints
+
+
+- **GET /users**
+
+   Retrieves a list of users.
+
+  **Response:**
+ 
+    ```json
+       {
+         "users": [
+           {
+             "id": "uuid",
+             "name": "User Name",
+             "email": "user@example.com"
+           }
+         ]
+       }
+
+
+- **POST /users**
+
+   Creates a new user.
+ 
+   **Request body:**
+
+      ```json
+           {
+              "name": "User Name",
+              "email": "user@example.com",
+              "password": "user-password"
+            }
+
+
+  **Reasponse:**
+
+     ```json
+           {
+              "id": "uuid"
+           }
+
+
+### Transaction Endpoints
+
+
+- **GET /transactions**
+  
+  Retrieves a list of transactions for a user.
+  
+  **Request parameters**
+    - `user_id` : UUID of the user
+ 
+  **Response:**
+
+  ```json
+   {
+  "transactions": [
+    {
+      "id": "uuid",
+      "user_id": "uuid",
+      "type": "deposit",
+      "amount": 100.00,
+      "timestamp": "2024-07-26T12:34:56Z"
+    }
+  ]
+  }
+
+- **POST /transactions**
+
+  Creates a new transaction.
+
+  **Request Body:**
+  ```json
+  {
+  "user_id": "uuid",
+  "type": "withdrawal",
+  "amount": 50.00
+  }
+
+
+ **Response**
+   ```json
+    {
+       "id": "uuid"
+     }
+
+
+
+## Design Decisions and Assumptions
