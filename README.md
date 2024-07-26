@@ -100,22 +100,23 @@ This project is a basic fintech platform that allows users to manage their accou
  
    **Request body:**
 
-      ```JSON
+```JSON
            {
               "name": "User Name",
               "email": "user@example.com",
               "password": "user-password"
             }
-      ```
+  ```
+      
 
 
   **Reasponse:**
 
-     ```JSON
+   ```JSON
            {
               "id": "uuid"
            }
-     ```
+  ```
 
 
 ### Transaction Endpoints
